@@ -1,0 +1,32 @@
+
+// @import url('https://fonts.cdnfonts.com/css/mont');
+
+.container {
+    max-width: 1220px;
+    margin: 0 auto;
+}
+
+main {
+    margin: 0;
+
+}
+
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+body {
+    // font-family: 'Mont', sans-serif;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+:root {
+    --font-family: 'Mont', sans-serif;
+}

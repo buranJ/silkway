@@ -1,0 +1,17 @@
+.residents {
+    margin-top: 20px;
+
+    .swiper-pagination-fraction,
+    .swiper-pagination-custom,
+    .swiper-horizontal>.swiper-pagination-bullets,
+    .swiper-pagination-bullets.swiper-pagination-horizontal {
+        display: none;
+    }
+    &__content{
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+    img{
+        object-fit: cover;
+    }
+}

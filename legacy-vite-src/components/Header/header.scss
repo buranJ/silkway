@@ -1,0 +1,25 @@
+.header {
+    padding-top: 20px;
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 15px;
+    }
+}
+.logo img{
+    width: 100px;
+    object-fit: cover;
+}
+.menu-icon {
+    display: none;
+    color:  #1D3557;
+}
+
+@media(max-width:1200px) {
+    .container {
+        padding: 0 10px;
+    }
+
+}

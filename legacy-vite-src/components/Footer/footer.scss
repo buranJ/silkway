@@ -1,0 +1,127 @@
+.footer {
+    .nav {
+        display: block;
+    }
+
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: #1D3557;
+
+    &__navbar {
+
+        b {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-family: var(--font-family);
+            font-weight: 700;
+            font-size: 20px;
+            border-bottom: 1px solid #fff;
+
+        }
+
+    }
+
+    &__content {
+        gap: 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .footer__list {
+
+        flex-direction: column;
+        align-items: start;
+        margin-top: 20px;
+
+        li {
+            a {
+                color: #FFFFFF;
+            }
+        }
+    }
+
+    &__number-list {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+
+        li {
+            list-style: none;
+
+            b {
+                text-decoration: underline;
+
+            }
+
+            a {
+                color: #FFFFFF;
+                text-decoration: none;
+                font-family: var(--font-family);
+                font-weight: 500;
+                font-size: 16px;
+            }
+        }
+    }
+
+    nav {
+        b {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-family: var(--font-family);
+            font-weight: 700;
+            font-size: 20px;
+            border-bottom: 1px solid #fff;
+
+        }
+    }
+
+    &__web-list {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__map-link {
+
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #FFFFFF;
+            font-family: var(--font-family);
+            font-weight: 500;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+
+    }
+
+    &__description {
+        margin-top: 20px;
+        color: #FFFFFF;
+        text-decoration: none;
+        font-family: var(--font-family);
+        font-weight: 500;
+        font-size: 18px;
+        max-width: 300px;
+        line-height: 30px;
+    }
+
+    &__til {
+        display: flex;
+
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+@media(max-width:600px) {
+    .footer {
+        &__number {
+            width: 90%;
+        }
+    }
+}

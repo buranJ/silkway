@@ -1,0 +1,168 @@
+.contact-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background: url('../../public/assets/icon/patern-bg.png');
+    background-size: cover;
+
+}
+
+.swform {
+    margin-top: 80px;
+    background: #AA1930;
+}
+
+.contact-form {
+    background-color: #a50019;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding-bottom: 40px;
+}
+
+.contact-form h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+
+    color: #fff;
+    display: block;
+    font-size: 23px;
+
+}
+
+.form__wrap label {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}
+
+.contact-form .react-tel-input input {
+    width: 100%;
+    padding: 10px 10px 10px 50px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 23px;
+    box-sizing: border-box;
+}
+
+.contact-form .react-tel-input .flag-dropdown {
+    background-color: #fff;
+    border-radius: 5px 0 0 5px;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00c853;
+    color: #fff;
+    font-size: 23px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.contact-form button:hover {
+    background-color: #00a43c;
+}
+
+.form__wrap label input {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 18px;
+    color: white;
+    background: none;
+    border: 1px solid #fff;
+    border-radius: 12px;
+    padding: 24px 12px;
+    font-style: italic;
+}
+
+.react-tel-input {
+    border: 1px solid #fff;
+    border-radius: 12px;
+    padding: 24px 12px;
+    box-sizing: border-box;
+}
+
+.react-tel-input .special-label {
+    background: none;
+}
+
+.flag-dropdown {
+    background: none;
+}
+
+.form-control {
+    background: none;
+    color: white;
+}
+
+.react-tel-input .form-control {
+    background: none;
+
+}
+
+.flag {
+    background: none;
+}
+
+// .flag-dropdown {
+//     background-color: none !important;
+//     border: 0;
+
+// }
+.contact-form .react-tel-input .flag-dropdown {
+    background: none;
+    border: 0;
+}
+
+.arrow {
+    border-top: white;
+}
+
+.form__input {
+    width: 100%;
+    padding: 5px 0 5px 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 23px;
+    box-sizing: border-box;
+}
+
+.form__input::placeholder {
+    color: #fff;
+    font-size: 20px;
+}
+
+.contact-form button {
+    padding: 13px;
+}
+
+@media (max-width: 600px) {
+    .contact-form {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .contact-form input,
+    .contact-form .react-tel-input input {
+        padding-left: 38px;
+        font-size: 18px;
+    }
+
+    .contact-form button {
+        padding: 14px;
+        font-size: 18px;
+    }
+}

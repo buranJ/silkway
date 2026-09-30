@@ -1,0 +1,35 @@
+.tiltext {
+    margin-top: 60px;
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        row-gap: 20px;
+    }
+
+    &__description {
+        max-width: 400px;
+        text-align: center;
+        font-family: var(--font-family);
+        font-weight: 600;
+        font-size: 15px;
+        color: #1d3557;
+    }
+
+    &__img {
+        img {
+            width: 100%;
+            border-radius: 20px;
+        }
+    }
+}
+
+@media(max-width:560px) {
+    .tiltext {
+        &__img {
+          width: 100%;
+        }
+    }
+}

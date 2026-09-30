@@ -1,0 +1,83 @@
+.strade {
+    .about__top {
+        align-items: start;
+        gap: 20px;
+    }
+
+    .projects {
+        background: none;
+
+        &__wrap {
+            padding: 0;
+            background: none;
+        }
+
+        &__description {
+            text-align: left;
+            color: #1D3557;
+        }
+    }
+
+    .blok__btns {
+        width: 90%;
+
+        a {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            width: 90%;
+
+        }
+    }
+
+    // .swiper-button-next:after,
+    // .swiper-rtl .swiper-button-prev:after {
+    //     color: rgba(29, 53, 87, 1);
+    //     margin-top: calc(100px - (var(--swiper-navigation-size) / 2));
+    //     border: rgba(29, 53, 87, 1) 1px solid;
+    //     padding: 10px 15px 10px 15px;
+    //     border-radius: 100%;
+    //     font-size: 18px;
+    // }
+
+    // .swiper-button-prev:after,
+    // .swiper-rtl .swiper-button-next:after {
+    //     color: rgba(29, 53, 87, 1);
+    //     margin-top: calc(100px - (var(--swiper-navigation-size) / 2));
+    //     border: rgba(29, 53, 87, 1) 1px solid;
+    //     padding: 10px 15px 10px 15px;
+    //     border-radius: 100%;
+    //     font-size: 18px;
+    // }
+
+    // .swiper-pagination-fraction {
+    //     color: rgba(29, 53, 87, 1);
+    // }
+    @media(max-width: 560px) {
+
+        .swiper-button-next:after,
+        .swiper-rtl .swiper-button-prev:after {
+            color: rgba(29, 53, 87, 1);
+            margin-top: calc(250px - (var(--swiper-navigation-size) / 2));
+            border: rgba(29, 53, 87, 1) 1px solid;
+            padding: 10px 15px 10px 15px;
+            border-radius: 100%;
+            font-size: 18px;
+        }
+
+        .swiper-button-prev:after,
+        .swiper-rtl .swiper-button-next:after {
+            color: rgba(29, 53, 87, 1);
+            margin-top: calc(250px - (var(--swiper-navigation-size) / 2));
+            border: rgba(29, 53, 87, 1) 1px solid;
+            padding: 10px 15px 10px 15px;
+            border-radius: 100%;
+            font-size: 18px;
+        }
+
+        .swiper-pagination-fraction {
+            color: rgba(29, 53, 87, 1);
+            bottom: var(--swiper-pagination-bottom, 60px);
+        }
+    }
+}

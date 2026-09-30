@@ -1,0 +1,89 @@
+.stextile {
+    .projects {
+        background: none;
+
+        &__wrap {
+            padding-top: 0;
+            background: none;
+        }
+
+        .swiper-slide {
+            width: 100%;
+
+
+
+            img {
+                height: 400px;
+                object-fit: cover;
+                width: 100%;
+            }
+        }
+
+        &__text {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        }
+
+        &__description {
+            text-align: left;
+            color: #1D3557;
+        }
+
+        &__photo {
+            margin-top: 0;
+        }
+
+        &__content {
+            margin: 0;
+        }
+
+        @media(max-width:600px) {
+
+            .swiper-button-next:after,
+            .swiper-rtl .swiper-button-prev:after {
+                color: rgba(29, 53, 87, 1);
+                margin-top: calc(100px - (var(--swiper-navigation-size) / 2));
+                border: rgba(29, 53, 87, 1) 1px solid;
+                padding: 10px 15px 10px 15px;
+                border-radius: 100%;
+                font-size: 18px;
+            }
+
+            .swiper-button-prev:after,
+            .swiper-rtl .swiper-button-next:after {
+                color: rgba(29, 53, 87, 1);
+                margin-top: calc(100px - (var(--swiper-navigation-size) / 2));
+                border: rgba(29, 53, 87, 1) 1px solid;
+                padding: 10px 15px 10px 15px;
+                border-radius: 100%;
+                font-size: 18px;
+            }
+
+            .swiper-pagination-fraction {
+                color: rgba(29, 53, 87, 1);
+            }
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                top: var(--swiper-navigation-top-offset, 59%);
+            }
+
+            .swiper-pagination-fraction,
+            .projects .swiper-pagination-custom,
+            .projects .swiper-horizontal>.swiper-pagination-bullets,
+            .projects .swiper-pagination-bullets.swiper-pagination-horizontal {
+                bottom: var(--swiper-pagination-bottom, 120px);
+            }
+
+            .swiper-slide {
+                width: 100%;
+
+                img {
+                    height: 220px;
+
+                }
+            }
+        }
+    }
+}
