@@ -1,0 +1,12 @@
+// Названия, тексты, ссылки и изображения профилей редактируются здесь.
+export const residentExamples = [
+  { name: "Шоро", brand: "shoro", category: "Напитки", description: "Кыргызский производитель национальных напитков и питьевой воды. Компания объединяет производство, узнаваемый бренд и широкую линейку продукции.", logo: "/assets/logos/shoro.png", logoAlt: "Логотип компании Шоро", logoWidth: 180, logoHeight: 71, website: "https://www.shoro.kg/ru/", websiteLabel: "shoro.kg" },
+  { name: "Tumar", brand: "tumar", category: "Текстиль и ремесло", description: "Изделия из кыргызской шерсти и войлока: обувь, аксессуары и предметы для дома.", logo: "/assets/logos/tumar.svg", logoAlt: "Логотип Tumar", logoWidth: 88, logoHeight: 32, website: "https://www.tumar.com/", websiteLabel: "tumar.com" },
+  { name: "Куликовский", brand: "kulikov", category: "Кондитерское производство", description: "Кондитерские изделия, десерты и собственная сеть магазинов — производство и продукт, который видит покупатель.", logo: "/assets/logos/kulikovsky.png", logoAlt: "Логотип кондитерского дома Куликовский", logoWidth: 304, logoHeight: 83, website: "https://site.kulikov.com/", websiteLabel: "kulikov.com" },
+] as const;
+
+export const partnerExamples = [
+  { name: "MBANK", category: "Финансовые сервисы", headline: "Оплата без лишних шагов", description: "Цифровой банк и платёжные решения для бизнеса. Покупки и расчёты становятся удобнее, когда нужный сервис всегда под рукой.", image: "/assets/photo/partner-payments-demo.jpg", imageAlt: "Бесконтактная оплата в магазине", website: "https://mbank.kg/", websiteLabel: "mbank.kg" },
+  { name: "О!", category: "Связь", headline: "Связь для ежедневной работы", description: "Кыргызский оператор мобильной связи. Стабильная связь и цифровые услуги важны для торговых команд, офисов и посетителей.", image: "/assets/photo/partner-connectivity-demo.jpg", imageAlt: "Монтаж сетевой инфраструктуры", website: "https://o.kg/ru/", websiteLabel: "o.kg" },
+  { name: "Кыргыз почтасы", category: "Доставка", headline: "Товары продолжают путь", description: "Национальный почтовый оператор Кыргызстана. Отправка заказов и получение посылок связывают торговлю с покупателями за пределами комплекса.", image: "/assets/photo/partner-logistics-demo.jpg", imageAlt: "Сортировка посылок в логистическом центре", website: "https://post.kg/", websiteLabel: "post.kg" },
+] as const;
