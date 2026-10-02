@@ -1,40 +1,88 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Factory, Handshake, Truck } from "lucide-react";
-import { ContactBand } from "@/components/ContactBand";
+import { ArrowUpRight, Phone } from "lucide-react";
+import { ContactForm } from "@/components/ContactForm";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import { partnerExamples } from "@/content/showcase";
+import { contacts } from "@/content/site";
+import styles from "../community.module.css";
 
 export const metadata: Metadata = {
-  title: "Технические партнёры",
-  description: "Партнёрство с индустриальным парком Silk Way.",
+  title: "Партнёры",
+  description: "Партнёры, сервисы и направления сотрудничества Silk Way.",
 };
 
 export default function PartnersPage() {
   return (
-    <main className="motion-page">
-      <section className="simple-hero section-pad partners-hero">
-        <div className="container simple-hero-grid">
-          <div data-motion-hero><span className="eyebrow">Сотрудничество</span><h1>Технические партнёры Silk Way</h1></div>
-          <p data-reveal>Парк объединяет производителей, поставщиков и сервисные компании вокруг общей инфраструктуры. Информация о технических партнёрах публикуется после официального подтверждения.</p>
+    <main className={`motion-page ${styles.page}`}>
+      <section className={styles.partnersHero} aria-labelledby="partners-title">
+        <div className={styles.partnersHeroImage} data-parallax>
+          <Image src="/assets/photo/industrial-enhanced.png" alt="Проектный вид территории Silk Way" fill sizes="100vw" quality={90} preload />
         </div>
-      </section>
-      <section className="partners-content section-pad">
-        <div className="container partners-grid">
-          <div className="partners-image" data-reveal-media><Image src="/assets/photo/project1.png" alt="Территория Silk Way" fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
-          <div className="partners-copy" data-reveal>
-            <h2>Площадка для разных производств</h2>
-            <p>Территория площадью 200 000 м² предназначена для заводов и фабрик. Здесь могут размещаться предприятия по выпуску одежды, строительных материалов и других видов продукции.</p>
-            <p>Завершено возведение индустриальных объектов общей площадью более 11 тысяч квадратных метров. Строятся фабрики и заводы общей площадью 40 тысяч квадратных метров.</p>
-            <div className="partner-principles">
-              <div><Factory aria-hidden="true" /><span>Производственная инфраструктура</span></div>
-              <div><Truck aria-hidden="true" /><span>Продуманная логистика</span></div>
-              <div><Handshake aria-hidden="true" /><span>Долгосрочное сотрудничество</span></div>
+        <div className={styles.partnersHeroShade} aria-hidden="true" />
+        <div className={`container ${styles.partnersHeroInner}`}>
+          <div className={styles.partnersHeroCopy} data-motion-hero>
+            <h1 id="partners-title">Партнёры<span>Silk Way</span></h1>
+            <p>Большой комплекс работает лучше, когда повседневные задачи решаются на месте: оплата, связь, доставка и другие сервисы.</p>
+            <div className={styles.partnersHeroActions}>
+              <a className="hero-action-primary" href={contacts.phones[2].href}><Phone size={18} aria-hidden="true" />Позвонить</a>
+              <a className="hero-action-secondary" href={contacts.whatsapp} target="_blank" rel="noopener noreferrer"><WhatsAppIcon size={18} aria-hidden="true" />WhatsApp</a>
             </div>
-            <Link className="button button-primary" href="#contact">Обсудить партнёрство<ArrowRight size={18} /></Link>
           </div>
         </div>
       </section>
-      <ContactBand title="Обсудим формат сотрудничества" text="Расскажите о вашей компании — подберём подходящий сценарий работы с индустриальным парком." />
+
+      <section className={styles.partnerProfiles} aria-labelledby="partner-profiles-title">
+        <div className="container">
+          <div className={styles.partnerProfilesIntro}>
+            <div data-reveal>
+              <h2 id="partner-profiles-title">Компании и сервисы<br /><span>Silk Way</span></h2>
+            </div>
+          </div>
+          <div className={styles.partnerStoryList}>
+            {partnerExamples.map((company) => (
+              <article className={styles.partnerStory} key={company.name} data-reveal>
+                <div className={styles.partnerStoryImage} data-reveal-media>
+                  <Image src={company.image} alt={company.imageAlt} fill sizes="(max-width: 680px) 100vw, 52vw" quality={86} />
+                </div>
+                <div className={styles.partnerStoryCopy}>
+                  <div className={styles.partnerStoryTop}><span className={styles.companyCategory}>{company.category}</span><strong>{company.name}</strong></div>
+                  <h3>{company.headline}</h3>
+                  <p>{company.description}</p>
+                  <a href={company.website} target="_blank" rel="noopener noreferrer">{company.websiteLabel} <ArrowUpRight size={19} aria-hidden="true" /></a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.partnerAreas} aria-labelledby="partner-areas-title">
+        <div className="container">
+          <div className={styles.partnerAreasIntro}>
+            <h2 id="partner-areas-title">Направления<br /><span>сотрудничества</span></h2>
+          </div>
+          <div className={styles.partnerAreaRows}>
+            <div><h3>Инфраструктура</h3><p>Инженерные системы, связь и техническое обслуживание корпусов.</p></div>
+            <div><h3>Движение товаров</h3><p>Доставка, хранение, упаковка и организация поставок.</p></div>
+            <div><h3>Сервисы для людей</h3><p>Оплата, обслуживание бизнеса и услуги для посетителей территории.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section className={`${styles.contact} ${styles.partnersContact}`} id="contact">
+        <div className={`container ${styles.contactGrid}`}>
+          <div data-reveal>
+            <h2>Предложите<br /><span>своё решение</span></h2>
+            <p>Напишите, чем занимается ваша компания и какую задачу вы можете решить для Silk Way. Мы свяжемся с вами.</p>
+            <div className={styles.contactLinks}>
+              <a href={contacts.phones[2].href}><Phone size={18} aria-hidden="true" />{contacts.phones[2].label}</a>
+              <a href={contacts.whatsapp} target="_blank" rel="noopener noreferrer"><WhatsAppIcon size={18} aria-hidden="true" />WhatsApp<ArrowUpRight size={16} aria-hidden="true" /></a>
+            </div>
+          </div>
+          <div className={`${styles.form} ${styles.partnersForm}`} data-reveal><ContactForm compact interestValue="Партнёрство" showDetails submitLabel="Отправить предложение" /></div>
+        </div>
+      </section>
     </main>
   );
 }
