@@ -109,10 +109,14 @@ function TextileSections() {
             <p>Во второй очереди предусмотрены двухуровневые помещения площадью 80 м². На первом уровне размещаются магазин и небольшой офис, на втором — склад.</p>
             <span>Проект второй очереди — 36 000 м²</span>
           </div>
-          <div className={styles.premisesDiagram} aria-label="Схема двухуровневого помещения" data-reveal>
-            <div><span>Верхний уровень</span><strong>Склад</strong></div>
-            <div><span>Нижний уровень</span><strong>Магазин и офис</strong></div>
-            <p>80 м² <span>площадь помещения</span></p>
+          <div className={styles.premisesImage} data-reveal>
+            <Image
+              src="/assets/photo/textile-two-level-concept.webp"
+              alt="Двухуровневое помещение: магазин тканей и офис внизу, склад наверху"
+              fill
+              sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 900px) calc(100vw - 64px), 55vw"
+              quality={85}
+            />
           </div>
         </div>
       </section>
