@@ -16,5 +16,14 @@ export function validateContactPhone(value: string): string | null {
   if (!/^\+?[0-9 ()\-]+$/.test(phone)) return "В номере допустимы только цифры, +, пробелы и скобки";
   const digits = phone.replace(/\D/g, "");
   if (digits.length < 9 || digits.length > 15) return "Укажите номер от 9 до 15 цифр";
+  if (/^(\d)\1+$/.test(digits)) return "Укажите действующий номер телефона";
+  return null;
+}
+
+export function validateContactDetails(value: string): string | null {
+  const details = value.trim();
+  if (!details) return "Расскажите, что предлагает ваша компания";
+  if (details.length < 15) return "Добавьте немного подробностей — не менее 15 символов";
+  if (details.length > 1200) return "Сократите описание до 1200 символов";
   return null;
 }
