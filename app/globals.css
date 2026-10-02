@@ -2453,6 +2453,7 @@ body[data-route-transition="leaving"] .route-transition {
   justify-content: center;
   gap: 10px;
   padding: 13px 22px;
+  border-radius: 4px;
   font-size: 0.84rem;
   font-weight: 800;
   transition: color 220ms ease, background-color 220ms ease, transform 220ms ease;
@@ -2473,6 +2474,10 @@ body[data-route-transition="leaving"] .route-transition {
 .hero-action-primary:hover,
 .hero-action-secondary:hover {
   transform: translateY(-2px);
+}
+
+.hero-journey .hero-action-primary:hover svg {
+  transform: translateY(3px);
 }
 
 .hero-action-secondary:hover {
@@ -3793,23 +3798,23 @@ body[data-route-transition="leaving"] .route-transition {
   }
 
   .immersive-hero-actions {
-    display: grid;
-    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 8px;
   }
 
   .hero-journey .hero-action-primary,
   .hero-journey .hero-action-secondary {
-    width: 100%;
+    width: auto;
     min-height: 48px;
-    padding: 10px;
+    padding: 10px 15px;
     gap: 7px;
     white-space: nowrap;
-    font-size: clamp(0.68rem, 2.8vw, 0.78rem);
+    font-size: clamp(0.72rem, 2.8vw, 0.82rem);
   }
 
   .hero-journey .hero-action-primary {
-    justify-content: space-between;
+    justify-content: center;
   }
 
   .hero-journey .hero-action-secondary {

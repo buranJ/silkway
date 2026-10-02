@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ArrowUpRight, Phone } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Phone } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import { SpatialHero } from "@/components/SpatialHero";
@@ -146,7 +146,7 @@ export function HeroJourney() {
             </p>
             <div className="immersive-hero-actions">
               <a className="hero-action-primary" href="#hero-territory">
-                Начать путешествие <ArrowRight size={18} aria-hidden="true" />
+                Посмотреть комплекс <ArrowDown size={18} aria-hidden="true" />
               </a>
               <a className="hero-action-secondary" href={contacts.phones[2].href}>
                 <Phone size={17} aria-hidden="true" /> {contacts.phones[2].label}
