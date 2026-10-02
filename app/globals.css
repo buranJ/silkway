@@ -364,8 +364,12 @@ h3 {
   line-height: 1.42;
 }
 
+.mobile-menu-location {
+  text-align: center;
+}
+
 .mobile-menu-footer p {
-  margin: 0;
+  margin: 0 auto;
   max-width: 40ch;
 }
 
@@ -403,13 +407,14 @@ h3 {
 .mobile-menu-actions a {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 8px;
   min-height: 54px;
   padding-top: 10px;
   border-top: 1px solid #d9e0e5;
   font-size: .74rem;
   font-weight: 600;
+  text-align: center;
   transition: color 180ms ease, border-color 180ms ease;
 }
 
@@ -2672,6 +2677,12 @@ body[data-route-transition="leaving"] .route-transition {
   bottom: 43px;
   display: flex;
   gap: 6px;
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+.hero-journey-progress.is-visible {
+  opacity: 1;
 }
 
 .hero-journey-progress span {

@@ -31,7 +31,7 @@ export const navigation: NavigationItem[] = [
 ];
 
 export const contacts = {
-  address: "Кыргызская Республика, г. Бишкек, с. Ленинское, ул. Алма-Атинская, 1/3",
+  address: "г. Бишкек, с. Ленинское, ул. Алма-Атинская, 1/3",
   phones: [
     { label: "0221 11 51 11", href: "tel:+996221115111" },
     { label: "0709 22 55 88", href: "tel:+996709225588" },
@@ -199,7 +199,6 @@ export const complexPages: Record<string, ComplexPageData> = {
     cardImage: "/assets/photo/project1.png",
     facts: [
       { value: "150 000 м²", label: "территория жилого комплекса" },
-      { value: "от $500", label: "ориентировочно за квадратный метр" },
       { value: "600", label: "парковочных мест" },
       { value: "до 1 км", label: "протяжённость аллеи" },
     ],

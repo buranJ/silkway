@@ -161,7 +161,7 @@ export function HeroJourney() {
             <a href="#masterplan">Открыть интерактивный генплан <ArrowUpRight size={18} aria-hidden="true" /></a>
           </div>
 
-          <div className="hero-journey-progress" aria-hidden="true">
+          <div className={`hero-journey-progress${active >= 0 ? " is-visible" : ""}`} aria-hidden="true">
             {scenes.map((item, index) => <span key={item.label} className={active === index ? "is-active" : active > index ? "is-past" : ""} />)}
           </div>
         </div>
