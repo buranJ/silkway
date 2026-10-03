@@ -83,7 +83,7 @@ function CameraRig({ active, progress, reducedMotion, view }: { active: number; 
   return null;
 }
 
-function Scene({ active, onSelect, progress, reducedMotion, view = "overview" }: { active: number; onSelect?: (index: number) => void; progress?: MutableRefObject<number>; reducedMotion: boolean; view?: View }) {
+function Scene({ active, onSelect, progress, reducedMotion, enhanceTexture, view = "overview" }: { active: number; onSelect?: (index: number) => void; progress?: MutableRefObject<number>; reducedMotion: boolean; enhanceTexture: boolean; view?: View }) {
   const shadowSize = useThree(state => state.size.width < 760 ? 1024 : 2048);
   return <>
     <color attach="background" args={["#122b38"]} />
@@ -94,7 +94,7 @@ function Scene({ active, onSelect, progress, reducedMotion, view = "overview" }:
       shadow-camera-left={-17} shadow-camera-right={17} shadow-camera-top={13} shadow-camera-bottom={-13}
       shadow-camera-near={.5} shadow-camera-far={60} shadow-normalBias={.025} shadow-bias={-.0001} />
     <CameraRig active={active} progress={progress} reducedMotion={reducedMotion} view={view} />
-    <SilkWayModel active={active} onSelect={onSelect} moving={!reducedMotion} />
+    <SilkWayModel active={active} onSelect={onSelect} moving={!reducedMotion} enhanceTexture={enhanceTexture} />
   </>;
 }
 
@@ -131,7 +131,7 @@ export function HeroMasterplan({ progress, active, playing = true }: { progress:
     {mounted && <Canvas shadows="basic" dpr={[1, 1.5]} camera={{ position: [-20, 20, 24], fov: 40, near: .1, far: 100 }}
       gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }} frameloop={!ready ? "always" : visible ? (playing && !reducedMotion) ? "always" : "demand" : "never"}
       fallback={<div className="digital-masterplan-fallback" />}>
-      <Suspense fallback={null}><Scene active={active} progress={progress} reducedMotion={reducedMotion} /><SceneReady onReady={onReady} /></Suspense>
+      <Suspense fallback={null}><Scene active={active} progress={progress} reducedMotion={reducedMotion} enhanceTexture={ready && visible && playing} /><SceneReady onReady={onReady} /></Suspense>
     </Canvas>}
   </div>;
 }
@@ -146,7 +146,7 @@ export function DigitalMasterplan({ active, onSelect, onSceneReady }: { active: 
       style={{ opacity: ready ? 1 : 0, transition: "opacity 240ms ease" }}
       gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }} frameloop={!ready ? "always" : visible ? reducedMotion ? "demand" : "always" : "never"}
       fallback={null}>
-      <Suspense fallback={null}><Scene active={active} onSelect={onSelect} reducedMotion={reducedMotion} view={view} /><SceneReady onReady={onReady} /></Suspense>
+      <Suspense fallback={null}><Scene active={active} onSelect={onSelect} reducedMotion={reducedMotion} enhanceTexture={ready && visible} view={view} /><SceneReady onReady={onReady} /></Suspense>
     </Canvas>}
     <div className="digital-masterplan-vignette" />
     <div className="masterplan-view-controls" role="group" aria-label="Ракурс генплана">

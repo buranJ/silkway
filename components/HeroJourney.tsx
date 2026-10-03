@@ -121,6 +121,7 @@ export function HeroJourney() {
 
   return (
     <section className="immersive-hero hero-journey" id="home-hero" ref={sectionRef}>
+      <link rel="preload" as="image" href="/assets/optimized/v1/masterplan-base.webp" crossOrigin="anonymous" />
       <span className="hero-journey-anchor" id="hero-territory" aria-hidden="true" />
       <div className="hero-journey-sticky">
         <div className="hero-journey-facade" ref={facadeRef}>

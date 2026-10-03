@@ -272,18 +272,51 @@ function ZoneHighlight({ active, moving }: { active: number; moving: boolean }) 
   </group>;
 }
 
-export function SilkWayModel({ active, onSelect, moving = true }: { active: number; onSelect?: (index: number) => void; moving?: boolean }) {
+const detailImages = new Map<string, Promise<HTMLImageElement>>();
+
+function loadDetailImage(path: string) {
+  let image = detailImages.get(path);
+  if (!image) {
+    image = new THREE.ImageLoader().loadAsync(path).catch(error => {
+      detailImages.delete(path);
+      throw error;
+    });
+    detailImages.set(path, image);
+  }
+  return image;
+}
+
+export function SilkWayModel({ active, onSelect, moving = true, enhanceTexture = false }: { active: number; onSelect?: (index: number) => void; moving?: boolean; enhanceTexture?: boolean }) {
   const maxTextureSize = useThree(state => state.gl.capabilities.maxTextureSize);
-  // Keep the texture stable on rotation/resizing: replacing it suspends the scene.
-  const [texturePath] = useState(() => window.innerWidth < 760 || maxTextureSize < 4096
-    ? "/assets/photo/masterplan-2048.webp" : "/assets/photo/masterplan-4096.webp");
-  const source = useLoader(THREE.TextureLoader, texturePath);
+  const invalidate = useThree(state => state.invalidate);
+  const [detailPath] = useState(() => window.innerWidth < 760 || maxTextureSize < 4096
+    ? "/assets/optimized/v1/masterplan-mobile.webp" : "/assets/optimized/v1/masterplan-desktop.webp");
+  // Only the small base texture blocks the first frame. The detailed image
+  // replaces its pixels in place, without suspending or rebuilding the scene.
+  const source = useLoader(THREE.TextureLoader, "/assets/optimized/v1/masterplan-base.webp");
   const texture = useMemo(() => {
-    const map = source.clone();
+    // Each canvas owns its texture source; upgrading one must not mutate the
+    // cached base texture or another canvas that is still rendering it.
+    const map = new THREE.Texture(source.image);
     map.colorSpace = THREE.SRGBColorSpace; map.anisotropy = 8; map.needsUpdate = true;
     return map;
   }, [source]);
   useEffect(() => () => texture.dispose(), [texture]);
+  useEffect(() => {
+    if (!enhanceTexture) return;
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+    if (connection?.saveData || /(^|-)2g$/.test(connection?.effectiveType ?? "")) return;
+    let cancelled = false;
+    loadDetailImage(detailPath).then(image => {
+      if (cancelled || texture.image === image) return;
+      texture.image = image;
+      texture.needsUpdate = true;
+      invalidate();
+    }).catch(() => {
+      // Keep the working base texture if the optional detail request fails.
+    });
+    return () => { cancelled = true; };
+  }, [detailPath, enhanceTexture, invalidate, texture]);
   const ground = useMemo(() => {
     const shape = new THREE.Shape(planBoundary.map(([x, z]) => new THREE.Vector2((x - 1008) / UNIT, (622.5 - z) / UNIT)));
     const geometry = new THREE.ShapeGeometry(shape);

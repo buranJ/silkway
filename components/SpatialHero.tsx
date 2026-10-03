@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
@@ -39,6 +38,7 @@ const fragmentShader = `
 export function SpatialHero({ active = true }: { active?: boolean }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const posterRef = useRef<HTMLImageElement>(null);
   const activeRef = useRef(active);
 
   useEffect(() => { activeRef.current = active; }, [active]);
@@ -77,19 +77,23 @@ export function SpatialHero({ active = true }: { active?: boolean }) {
     const plane = new THREE.Mesh(planeGeometry, planeMaterial);
     scene.add(plane);
 
-    const textureLoader = new THREE.TextureLoader();
-    textureLoader.load(
-      "/assets/photo/hero-1.jpg",
-      (texture) => {
+    // Reuse the responsive image that is already on screen. Downloading the
+    // original again for WebGL used to compete with the masterplan texture.
+    const poster = posterRef.current;
+    const updatePosterTexture = () => {
+      if (poster?.naturalWidth) {
+        const texture = new THREE.Texture(poster);
         texture.colorSpace = THREE.SRGBColorSpace;
         texture.minFilter = THREE.LinearMipmapLinearFilter;
         texture.anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(), 8);
+        texture.needsUpdate = true;
+        uniforms.uTexture.value.dispose();
         uniforms.uTexture.value = texture;
         canvas.classList.add("is-ready");
-      },
-      undefined,
-      () => canvas.classList.remove("is-ready"),
-    );
+      }
+    };
+    if (poster?.complete) updatePosterTexture();
+    poster?.addEventListener("load", updatePosterTexture);
 
     const pointerTarget = new THREE.Vector2();
     const pointerCurrent = new THREE.Vector2();
@@ -162,6 +166,7 @@ export function SpatialHero({ active = true }: { active?: boolean }) {
       host.removeEventListener("pointerleave", onPointerLeave);
       window.removeEventListener("resize", resize);
       window.removeEventListener("scroll", onScroll);
+      poster?.removeEventListener("load", updatePosterTexture);
       planeGeometry.dispose();
       planeMaterial.dispose();
       if (uniforms.uTexture.value instanceof THREE.Texture) uniforms.uTexture.value.dispose();
@@ -171,13 +176,19 @@ export function SpatialHero({ active = true }: { active?: boolean }) {
 
   return (
     <div className="spatial-hero" ref={hostRef} aria-hidden="true">
-      <Image
+      {/* A native responsive image lets WebGL reuse the same decoded bitmap. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        ref={posterRef}
         className="spatial-hero-poster"
-        src="/assets/photo/hero-1.jpg"
+        src="/assets/optimized/v1/hero-1920.webp"
+        srcSet="/assets/optimized/v1/hero-960.webp 960w, /assets/optimized/v1/hero-1920.webp 1920w"
         alt=""
-        fill
-        priority
-        quality={90}
+        width={1920}
+        height={1080}
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
         sizes="100vw"
       />
       <canvas ref={canvasRef} className="spatial-hero-canvas" />

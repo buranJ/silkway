@@ -2346,6 +2346,8 @@ body[data-route-transition="leaving"] .route-transition {
 }
 
 .spatial-hero-poster {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
 }
@@ -2578,7 +2580,7 @@ body[data-route-transition="leaving"] .route-transition {
 .hero-masterplan-preview {
   position: absolute;
   inset: 0;
-  background: #122b38 url("/assets/photo/ren1-web.jpg") center / cover no-repeat;
+  background: #122b38 url("/assets/optimized/v1/plan-poster-desktop.webp") center / cover no-repeat;
 }
 
 .hero-masterplan-canvas { opacity: 0; transition: opacity 240ms ease; }
@@ -3139,7 +3141,7 @@ body[data-route-transition="leaving"] .route-transition {
 .masterplan-poster {
   position: absolute;
   inset: 0;
-  background: #122b38 url("/assets/photo/masterplan-poster-desktop.webp") center / cover no-repeat;
+  background: #122b38 url("/assets/optimized/v1/plan-poster-desktop.webp") center / cover no-repeat;
 }
 
 .masterplan-plane:not(.is-ready) .masterplan-zone-controls,
@@ -3187,7 +3189,8 @@ body[data-route-transition="leaving"] .route-transition {
 @media (max-width: 760px) {
   .masterplan-view-controls { top: 14px; left: 14px; }
   .masterplan-view-controls button { padding-inline: 10px; min-height: 44px; font-size: 11px; }
-  .masterplan-poster { background-image: url("/assets/photo/masterplan-poster-mobile.webp"); }
+  .hero-masterplan-preview,
+  .masterplan-poster { background-image: url("/assets/optimized/v1/plan-poster-mobile.webp"); }
 }
 
 .digital-masterplan {
