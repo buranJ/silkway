@@ -49,7 +49,9 @@ export function SpatialHero({ active = true }: { active?: boolean }) {
     if (!host || !canvas) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) return;
+    // Portrait devices use the already loaded poster. The WebGL facade can
+    // render an empty frame at this aspect ratio and cover the image.
+    if (reducedMotion || window.matchMedia("(max-width: 759px)").matches) return;
 
     let renderer: THREE.WebGLRenderer;
     try {

@@ -2363,6 +2363,12 @@ body[data-route-transition="leaving"] .route-transition {
   opacity: 1;
 }
 
+@media (max-width: 759px) {
+  .spatial-hero-canvas {
+    display: none;
+  }
+}
+
 .hero-atmosphere {
   z-index: 1;
   background:
